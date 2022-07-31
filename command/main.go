@@ -2,6 +2,11 @@ package main
 
 import "fmt"
 
+//  Use the Command pattern when you want to parametrize objects with operations.
+// 	Benefits - decouples invokers from executors - single responsibility, easy to add more commands
+// 	Cons - adds complexity as we we require another "command" interface
+//  For more info see https://refactoring.guru/design-patterns/command
+
 //
 // invoker
 //
