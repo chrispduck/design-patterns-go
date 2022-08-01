@@ -13,7 +13,7 @@ import "fmt"
 
 // invoker concrete class
 type Invoker struct {
-	command Command
+	command ICommand
 }
 
 func (i *Invoker) send() {
@@ -26,13 +26,13 @@ func (i *Invoker) send() {
 //
 
 // command interface
-type Command interface {
+type ICommand interface {
 	execute()
 }
 
 // concrete command 1
 type AddLiquidityCommand struct {
-	receiver Receiver
+	receiver IReceiver
 }
 
 func (c *AddLiquidityCommand) execute() {
@@ -42,7 +42,7 @@ func (c *AddLiquidityCommand) execute() {
 
 // concrete command 2
 type RemoveLiquidityCommand struct {
-	receiver Receiver
+	receiver IReceiver
 }
 
 func (c *RemoveLiquidityCommand) execute() {
@@ -54,7 +54,7 @@ func (c *RemoveLiquidityCommand) execute() {
 //
 
 // Shared Receiver (or environment)
-type Receiver interface {
+type IReceiver interface {
 	addLiquidity()
 	removeLiquidity()
 }

@@ -14,16 +14,16 @@ import (
 //   when you have a lot of similar classes that only differ in the way they execute some behaviour.
 //   when your class has a massive conditional operator that switches between different variants of the same algorithm.
 
-type Simulator interface {
+type ISimulator interface {
 	RunAlgo()
-	SetAlgo(algo Algorithm)
+	SetAlgo(algo IAlgorithm)
 }
 
 type BasicSimulator struct {
-	algo Algorithm
+	algo IAlgorithm
 }
 
-type Algorithm interface {
+type IAlgorithm interface {
 	Run()
 }
 
@@ -32,7 +32,7 @@ func (bs *BasicSimulator) RunAlgo() {
 	bs.algo.Run()
 }
 
-func (bs *BasicSimulator) SetAlgo(algo Algorithm) {
+func (bs *BasicSimulator) SetAlgo(algo IAlgorithm) {
 	bs.algo = algo
 }
 
@@ -48,15 +48,15 @@ func (*LinearRegression) Run() {
 	fmt.Println("Running LR")
 }
 
-func NewBasicSimulator(algo Algorithm) Simulator {
+func NewBasicSimulator(algo IAlgorithm) ISimulator {
 	return &BasicSimulator{algo: algo}
 }
 
-func NewLinearRegression() Algorithm {
+func NewLinearRegression() IAlgorithm {
 	return &LinearRegression{}
 }
 
-func NewKNN() Algorithm {
+func NewKNN() IAlgorithm {
 	return &KNN{}
 }
 
