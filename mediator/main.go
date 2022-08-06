@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+// Mediator pattern is used to remove coupling between many components that call each other
+// by making them all communicate through a single (object) interface, the mediator.
+// Cons are that it can become a god interface
 type ComponentName string
 
 const (
